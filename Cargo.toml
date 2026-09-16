@@ -1,0 +1,29 @@
+[package]
+name = "octopus"
+version = "0.1.0"
+edition = "2024"
+description = "A Postgres-backed durable execution library (Temporal-style workflows without a server)"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/mkhorchani/octopus"
+readme = "README.md"
+keywords = ["workflow", "durable-execution", "postgres", "orchestration"]
+categories = ["asynchronous", "database"]
+
+[dependencies]
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "time", "sync"] }
+sqlx = { version = "0.8", features = ["runtime-tokio", "postgres", "json", "uuid", "chrono", "migrate"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+uuid = { version = "1", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+async-trait = "0.1"
+thiserror = "2"
+tracing = "0.1"
+rand = "0.8"
+
+[dev-dependencies]
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+anyhow = "1"
+
+[[example]]
+name = "checkout"
